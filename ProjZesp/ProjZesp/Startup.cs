@@ -71,7 +71,7 @@ namespace ProjZesp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseBrowserLink();     
+                //app.UseBrowserLink();       // normalnie dziala, wylaczone bo BitDefender blokuje
             }
             else
             {
