@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProjZesp.Models.Pokoj>
+
+@{
+    ViewData["Title"] = "Pokoje";
+}
+
+<h2>Lista pokoi</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p>Dostępność</p>
+            </th>
+            <th>
+                <p>Ilość miejsc w pokoju</p>
+            </th>
+            <th>
+                <p>Nr pokoju</p>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Pokoj_Dostępnosc == true)
+                    {
+                        <p>Dostępny</p>
+                    }
+                    else
+                    {
+                        <p>Niedostępny</p>
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pokoj_IloscMiejsc) os.
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pokoj_Numer)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.ID">Rezerwacja</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

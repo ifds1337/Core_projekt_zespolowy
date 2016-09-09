@@ -8,9 +8,10 @@ using ProjZesp.Data;
 namespace ProjZesp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160908205718_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rc2-20901")
@@ -176,8 +177,6 @@ namespace ProjZesp.Data.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Klient_Email");
-
                     b.Property<string>("Klient_Imie");
 
                     b.Property<string>("Klient_Nazwisko");
@@ -187,22 +186,6 @@ namespace ProjZesp.Data.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Klient");
-                });
-
-            modelBuilder.Entity("ProjZesp.Models.Pokoj", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Pokoj_Dostępnosc");
-
-                    b.Property<int>("Pokoj_IloscMiejsc");
-
-                    b.Property<int>("Pokoj_Numer");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Pokoje");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

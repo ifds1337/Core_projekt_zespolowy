@@ -27,6 +27,13 @@ namespace ProjZesp.Controllers
             return View();
         }
 
+        public IActionResult Pokoje()
+        {
+            ViewData["Message"] = "info o pokojach";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();

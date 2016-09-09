@@ -1,0 +1,50 @@
+@model ProjZesp.Models.Pokoj
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Pokoj</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="Pokoj_Dostępnosc" />
+                    <label asp-for="Pokoj_Dostępnosc"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Pokoj_IloscMiejsc" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Pokoj_IloscMiejsc" class="form-control" />
+                <span asp-validation-for="Pokoj_IloscMiejsc" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Pokoj_Numer" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Pokoj_Numer" class="form-control" />
+                <span asp-validation-for="Pokoj_Numer" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

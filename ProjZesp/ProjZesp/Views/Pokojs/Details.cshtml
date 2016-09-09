@@ -1,0 +1,36 @@
+@model ProjZesp.Models.Pokoj
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pokoj</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pokoj_Dostępnosc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pokoj_Dostępnosc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pokoj_IloscMiejsc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pokoj_IloscMiejsc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pokoj_Numer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pokoj_Numer)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
