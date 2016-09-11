@@ -10,13 +10,13 @@
     <thead>
         <tr>
             <th>
-                <p>Dostępność</p>
+                <text>Dostępność</text>
             </th>
             <th>
-                <p>Ilość miejsc w pokoju</p>
+                <text>Ilość miejsc w pokoju</text>
             </th>
             <th>
-                <p>Nr pokoju</p>
+                <text>Nr pokoju</text>
             </th>
             <th></th>
         </tr>
@@ -28,11 +28,11 @@
                 <td>
                     @if (item.Pokoj_Dostępnosc == true)
                     {
-                        <p>Dostępny</p>
+                        <text>Dostępny</text>
                     }
                     else
                     {
-                        <p>Niedostępny</p>
+                        <text>Niedostępny</text>
                     }
 
                 </td>
@@ -43,7 +43,7 @@
                     @Html.DisplayFor(modelItem => item.Pokoj_Numer)
                 </td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.ID">Rezerwacja</a>
+                    <a asp-action="Rezerwacja" asp-route-id="@item.ID">Rezerwacja</a>
                 </td>
             </tr>
         }

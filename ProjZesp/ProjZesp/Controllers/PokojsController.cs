@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjZesp.Data;
 using ProjZesp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ProjZesp.Controllers
 {
     public class PokojsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public PokojsController(ApplicationDbContext context)
         {
@@ -31,10 +33,55 @@ namespace ProjZesp.Controllers
             return View(await _context.Pokoje.ToListAsync());
         }
 
-        // GET: Rezerwacja pokoi
-        public IActionResult Rezerwacja()
+        // GET: Przeglądniecie szczegółów pokoju przed rezerwacja
+        public async Task<IActionResult> Rezerwacja(int? id)
         {
-            return View();
+            if (User.Identity.IsAuthenticated == true)
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+
+                var pokoj = await _context.Pokoje.SingleOrDefaultAsync(m => m.ID == id);
+                if (pokoj == null)
+                {
+                    return NotFound();
+                }
+
+                return View(pokoj);
+            }
+            else
+            {
+                return RedirectToAction(nameof(HomeController.Index), "Account/Login");
+            }
+            
+        }
+
+        // GET: Dokonanie rezerwacji
+        public async Task<IActionResult> Rezerwuj(int id, [Bind("ID,Pokoj_Dostępnosc,Pokoj_IloscMiejsc,Pokoj_Numer")] Pokoj pokoj)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(pokoj);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PokojExists(pokoj.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            return View(pokoj);
         }
 
 
@@ -159,6 +206,11 @@ namespace ProjZesp.Controllers
         private bool PokojExists(int id)
         {
             return _context.Pokoje.Any(e => e.ID == id);
+        }
+
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
         }
     }
 }

@@ -1,5 +1,47 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ProjZesp.Models.Pokoj
+
 @{
+    ViewData["Title"] = "Rezerwacja";
 }
+
+<h2>Szczegóły pokoju </h2>
+
+<div>
+    <h4>Pokoj</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Dostępność
+        </dt>
+        <dd>
+            @if (Model.Pokoj_Dostępnosc == true)
+            {
+                <text>Dostępny</text>
+            }
+            else
+            {
+                <text>Niedostępny</text>
+            }
+        </dd>
+        <dt>
+            Ilość miejsc
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pokoj_IloscMiejsc)
+        </dd>
+        <dt>
+            Numer pokoju
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pokoj_Numer)
+        </dd>
+        <dd>
+            Od: <input type="date" name="poczatek" />
+            Do: <input type="date" name="koniec" />
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Rezerwuj" asp-route-id="@Model.ID">Rezerwuj</a> |
+    <a asp-action="ListaPokoi">Powrót do listy</a>
+</div>

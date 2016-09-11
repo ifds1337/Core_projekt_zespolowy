@@ -22,7 +22,7 @@ namespace ProjZesp.Controllers
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Strona kontaktowa";
 
             return View();
         }
