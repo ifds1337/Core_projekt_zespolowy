@@ -1,0 +1,50 @@
+@model IEnumerable<ProjZesp.Models.Rezerwacje>
+
+@{
+    ViewData["Title"] = "Moje rezerwacje"; 
+}
+
+<h2>Moje rezerwacje</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <text>Id Pokoju</text>
+            </th>
+            <th>
+                <text>Ilosc miejsc w pokoju</text>
+            </th>
+            <th>
+                <text>Od - do</text>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.Rez_ID_Klienta == (string)ViewData["userIdValue"])
+                {
+                    @Html.DisplayFor(modelItem => item.Rez_ID_Pokoju)
+                }
+            </td>
+            <td>
+                @if (item.Rez_ID_Klienta == (string)ViewData["userIdValue"])
+                {
+                    <text>4</text>
+                }
+            </td>
+            <td>
+                @if (item.Rez_ID_Klienta == (string)ViewData["userIdValue"])
+                {
+                    @Html.DisplayFor(modelItem => item.Rez_Od)
+                    <text> - </text>
+                    @Html.DisplayFor(modelItem => item.Rez_Do)
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

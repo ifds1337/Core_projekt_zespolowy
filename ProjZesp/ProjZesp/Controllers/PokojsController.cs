@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjZesp.Data;
 using ProjZesp.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace ProjZesp.Controllers
 {
@@ -64,28 +65,49 @@ namespace ProjZesp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                if (pokoj.Pokoj_Dostępnosc == true)    // Gdy pokoj jest dostepny to mozna rezerwowac
                 {
-                    pokoj.Pokoj_Dostępnosc = false;
-                    _context.Update(pokoj);
-                    await _context.SaveChangesAsync();
+                    try
+                    {
+                        var claimsIdentity = User.Identity as ClaimsIdentity;
+                        var zarezerwowano = new Rezerwacje();
 
-                    return RedirectToAction(nameof(HomeController.Index), "Rezerwacjes/Zarezerwowano");
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PokojExists(pokoj.ID))
-                    {
-                        return NotFound();
+                        var userIdClaim = claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);   // pobieranie ID uzytkownika zalogowanego(Prinicpal zabezpieczenie)
+                        var userIdValue = userIdClaim.Value;
+
+                        if (ModelState.IsValid)
+                        {
+                            _context.Add(zarezerwowano);
+                            zarezerwowano.Rez_ID_Pokoju = pokoj.ID;
+                            zarezerwowano.Rez_ID_Klienta = userIdValue;
+
+                            await _context.SaveChangesAsync();
+
+                            pokoj.Pokoj_Dostępnosc = false;
+                            _context.Update(pokoj);
+                            await _context.SaveChangesAsync();
+
+                            return RedirectToAction(nameof(HomeController.Index), "Rezerwacjes/Zarezerwowano");
+                        }
+
                     }
-                    else
+
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!PokojExists(pokoj.ID))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
                 }
-                
+
+                // Co sie dzieje w przypadku, gdy pokoj jest niedostepny
             }
-            return View(pokoj);
+            return RedirectToAction(nameof(HomeController.Index), "Pokojs/ListaPokoi");
         }
 
 

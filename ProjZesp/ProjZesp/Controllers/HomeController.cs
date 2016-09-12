@@ -34,6 +34,11 @@ namespace ProjZesp.Controllers
             return View();
         }
 
+        public IActionResult Cennik()
+        {
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();

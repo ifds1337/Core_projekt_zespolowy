@@ -212,7 +212,7 @@ namespace ProjZesp.Data.Migrations
 
                     b.Property<DateTime>("Rez_Do");
 
-                    b.Property<int>("Rez_ID_Klienta");
+                    b.Property<string>("Rez_ID_Klienta");
 
                     b.Property<int>("Rez_ID_Pokoju");
 

@@ -8,7 +8,7 @@ using ProjZesp.Data;
 namespace ProjZesp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160911205440_Rezerwacje")]
+    [Migration("20160912025127_Rezerwacje")]
     partial class Rezerwacje
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -213,7 +213,7 @@ namespace ProjZesp.Data.Migrations
 
                     b.Property<DateTime>("Rez_Do");
 
-                    b.Property<int>("Rez_ID_Klienta");
+                    b.Property<string>("Rez_ID_Klienta");
 
                     b.Property<int>("Rez_ID_Pokoju");
 

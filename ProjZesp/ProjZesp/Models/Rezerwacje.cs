@@ -10,7 +10,7 @@ namespace ProjZesp.Models
     {
         public int ID { get; set; }
         public int Rez_ID_Pokoju { get; set; }
-        public int Rez_ID_Klienta { get; set; }
+        public string Rez_ID_Klienta { get; set; }
 
         [Display(Name = "Rezerwacja od")]
         [DataType(DataType.Date)]
@@ -18,6 +18,6 @@ namespace ProjZesp.Models
 
         [Display(Name = "Rezerwacja do")]
         [DataType(DataType.Date)]
-        public DateTime Rez_Do { get; set; }  
+        public DateTime Rez_Do { get; set; }
     }
 }

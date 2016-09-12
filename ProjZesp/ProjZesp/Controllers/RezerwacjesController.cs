@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ProjZesp.Data;
 using ProjZesp.Models;
+using System.Security.Claims;
 
 namespace ProjZesp.Controllers
 {
@@ -16,7 +17,7 @@ namespace ProjZesp.Controllers
 
         public RezerwacjesController(ApplicationDbContext context)
         {
-            _context = context;
+            _context = context;    
         }
 
         // GET: Rezerwacjes
@@ -26,11 +27,20 @@ namespace ProjZesp.Controllers
         }
 
         // GET: Zrob rezerwacje w bazie danych rezerwacji
-        public async Task<IActionResult> Zarezerwowano()
+        public async Task<IActionResult> Zarezerwowano(int id)  // ostatnia faza po zarezerwowaniu (proba wpisania do bazy danych rezerwacji
         {
-
-
             return View();
+        }
+
+        // GET: Pokaz moje rezerwacje
+        public async Task<IActionResult> MojeRezerwacje()
+        {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            var userIdClaim = claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);   // pobieranie ID uzytkownika zalogowanego(Prinicpal zabezpieczenie)
+            ViewData["userIdValue"] = userIdClaim.Value;
+            
+
+            return View(await _context.Rezerwacje.ToListAsync());
         }
 
         // GET: Rezerwacjes/Details/5

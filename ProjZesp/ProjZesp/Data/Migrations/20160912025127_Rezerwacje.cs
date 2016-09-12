@@ -16,7 +16,7 @@ namespace ProjZesp.Data.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Rez_Do = table.Column<DateTime>(nullable: false),
-                    Rez_ID_Klienta = table.Column<int>(nullable: false),
+                    Rez_ID_Klienta = table.Column<string>(nullable: true),
                     Rez_ID_Pokoju = table.Column<int>(nullable: false),
                     Rez_Od = table.Column<DateTime>(nullable: false)
                 },
