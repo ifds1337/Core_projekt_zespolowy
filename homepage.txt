@@ -1,0 +1,87 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Darmowy Kurs CSS</title>
+
+    <style>
+        #caly_blok {
+            font-size: 14px;
+            
+             text-align:  justify;
+        }
+
+        #naglowek {
+            font-size: 24px;
+           
+            text-align: center;
+        }
+
+        #lewy {
+            float: left;
+           
+            min-height: 150px;
+            width: 50%;
+        }
+
+        #prawy {
+            float: left;
+            
+            min-height: 150px;
+            width: 50%;
+        }
+
+        #stopka {
+            clear: both;
+            
+            text-align: center;
+        }
+
+        p {
+            margin: 0;
+            padding: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div align="center">
+        <img src="~/Grafiki/Logo.jpg" height="418" width="806" align="middle" />
+    </div>
+
+    <div id="caly_blok">
+        <div id="naglowek"> <p><b>Serdecznie witamy w hotelu "Krakowski"!</b></p></div>
+
+        <div id="lewy">
+            </br></br>
+            <p>  <b>Zapewniamy, ¿e do³o¿ymy wszelkich starañ, by pobyt w naszym hotelu by³ mi³ym i niezapomnianym wspomnieniem z odwiedzin piêknego, królewskiego Krakowa.</b> </br></br>
+Hotel usytuowany jest oko³o 4 km od zabytkowego centrum Starego Miasta. Lokalizacja hotelu w zacisznej okolicy z dala od wielkomiejskiego zgie³ku stwarza dogodne warunki do pracy i wypoczynku.
+Oferujemy Pañstwu 199 miejsc w pokojach 1, 2 osobowych i 1, 2, 3 osobowych typu Economic wyposa¿onych w ³azienkê, TV, telefon, radio, Internet bezprzewodowy. Przy hotelu funkcjonuje du¿y, monitorowany parking dla samochodów osobowych i autokarów.
+Zapraszamy Pañstwa na smaczne œniadania w formie bufetu do restauracji hotelowej, która poleca szeroki wybór dañ kuchni polskiej i europejskiej. Usytuowany przy restauracji drink bar zachêca do spotkañ towarzyskich proponuj¹c szerok¹ gamê napojów i alkoholi.</p> 
+            </br></br></br></br></br>
+
+            <img src="~/Grafiki/pokój5/Rezydencja-Hotel-Katowice-Pokoje-Design21920x1080.jpg" height="90%" width="90%" align="middle" />
+        </div>
+
+        <div id="prawy">
+            <img src="~/Grafiki/pokój1/img3601-1358601638.jpg" height="90%" width="90%" align="middle" />
+            </br></br></br></br></br>
+            
+            <p>
+
+                Hotel oferuje pokoje dla pal¹cych i niepal¹cych oraz przystosowane do potrzeb osób niepe³nosprawnych. </br></br>
+                Dzieci do lat 6 nie korzystaj¹ce z oddzielnego ³ó¿ka przebywaj¹ w pokoju rodziców bezp³atnie.</br></br>
+                W cenie pokoju œniadanie serwowane w formie bufetu.</br></br>
+                Doba hotelowa trwa od godziny 14.00 do 12.00</br></br>
+            </p>
+        </div>
+
+        <div id="stopka"></div>
+    </div>
+
+</body>
+</html>

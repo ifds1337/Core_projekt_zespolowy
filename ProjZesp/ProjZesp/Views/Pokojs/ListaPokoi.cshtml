@@ -10,6 +10,9 @@
     <thead>
         <tr>
             <th>
+                <text>Zdjęcie pokoju</text>
+            </th>
+            <th>
                 <text>Dostępność</text>
             </th>
             <th>
@@ -22,9 +25,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
+            @foreach (var item in Model)
+            {
             <tr>
+
                 <td>
                     @if (item.Pokoj_Dostępnosc == true)
                     {

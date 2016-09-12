@@ -14,7 +14,6 @@ namespace ProjZesp.Controllers
     public class PokojsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<ApplicationUser> _userManager;
 
         public PokojsController(ApplicationDbContext context)
         {
@@ -59,14 +58,19 @@ namespace ProjZesp.Controllers
         }
 
         // GET: Dokonanie rezerwacji
-        public async Task<IActionResult> Rezerwuj(int id, [Bind("ID,Pokoj_Dostępnosc,Pokoj_IloscMiejsc,Pokoj_Numer")] Pokoj pokoj)
+        public async Task<IActionResult> Rezerwuj(int id) // Zmiana w bazie danych Pokoju i przekierowanie do bazy danych Rezerwacji
         {
+            var pokoj = await _context.Pokoje.SingleOrDefaultAsync(m => m.ID == id);
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    pokoj.Pokoj_Dostępnosc = false;
                     _context.Update(pokoj);
                     await _context.SaveChangesAsync();
+
+                    return RedirectToAction(nameof(HomeController.Index), "Rezerwacjes/Zarezerwowano");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -79,7 +83,7 @@ namespace ProjZesp.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Index");
+                
             }
             return View(pokoj);
         }
@@ -206,11 +210,6 @@ namespace ProjZesp.Controllers
         private bool PokojExists(int id)
         {
             return _context.Pokoje.Any(e => e.ID == id);
-        }
-
-        private Task<ApplicationUser> GetCurrentUserAsync()
-        {
-            return _userManager.GetUserAsync(HttpContext.User);
         }
     }
 }

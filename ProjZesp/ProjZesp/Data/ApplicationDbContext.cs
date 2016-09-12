@@ -26,5 +26,7 @@ namespace ProjZesp.Data
         public DbSet<Klient> Klient { get; set; }
 
         public DbSet<Pokoj> Pokoje { get; set; }
+
+        public DbSet<Rezerwacje> Rezerwacje { get; set; }
     }
 }

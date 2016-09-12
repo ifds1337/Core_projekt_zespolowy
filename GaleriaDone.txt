@@ -1,5 +1,5 @@
-锘緻{
-    ViewData["Title"] = "Galeria";
+@{
+    ViewData["Title"] = "Home Page";
 }
 <html>
 <head>
@@ -9,28 +9,33 @@
     <style>
         #caly_blok {
             font-size: 14px;
-            text-align: justify;
+            
+             text-align:  justify;
         }
 
         #naglowek {
             font-size: 24px;
+           
             text-align: center;
         }
 
         #lewy {
             float: left;
+           
             min-height: 150px;
             width: 50%;
         }
 
         #prawy {
             float: left;
+            
             min-height: 150px;
             width: 50%;
         }
 
         #stopka {
             clear: both;
+            
             text-align: center;
         }
 
@@ -55,37 +60,37 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="~/Galeria/pok贸j4/Rezydencja-Hotel-Katowice-Pokoje-Design11920x1080 (1).jpg" alt="ASP.NET" class="img-responsive" align="middle" />
+                <img src="~/Galeria/pok骿4/Rezydencja-Hotel-Katowice-Pokoje-Design11920x1080 (1).jpg" alt="ASP.NET" class="img-responsive" align="middle"/>
                 <div class="carousel-caption">
-
+                    
                 </div>
             </div>
             <div class="item">
-                <img src="~/Galeria/pok贸j4/Rezydencja-Hotel-Katowice-Pokoje-Design11920x1080.jpg" alt="Visual Studio" class="img-responsive" />
+                <img src="~/Galeria/pok骿4/Rezydencja-Hotel-Katowice-Pokoje-Design11920x1080.jpg" alt="Visual Studio" class="img-responsive" />
                 <div class="carousel-caption">
-
+                    
                 </div>
             </div>
             <div class="item">
-                <img src="~/Galeria/pok贸j4/Rezydencja-Hotel-Katowice-Pokoje-Design1920x1080.jpg" alt="Package Management" class="img-responsive" />
+                <img src="~/Galeria/pok骿4/Rezydencja-Hotel-Katowice-Pokoje-Design1920x1080.jpg" alt="Package Management" class="img-responsive" />
                 <div class="carousel-caption">
-
+                    
                 </div>
             </div>
             <div class="item">
-                <img src="~/Galeria/pok贸j5/Rezydencja-Hotel-Katowice-Pokoje-Design21920x1080.jpg" alt="Microsoft Azure" class="img-responsive" />
+                <img src="~/Galeria/pok骿5/Rezydencja-Hotel-Katowice-Pokoje-Design21920x1080.jpg" alt="Microsoft Azure" class="img-responsive" />
                 <div class="carousel-caption">
-
+                   
                 </div>
             </div>
             <div class="item">
-                <img src="~/Galeria/pok贸j5/Rezydencja-Hotel-Katowice-Pokoje-Design31920x1080.jpg" alt="Microsoft Azure" class="img-responsive" />
-                <div class="carousel-caption">
+                <img src="~/Galeria/pok骿5/Rezydencja-Hotel-Katowice-Pokoje-Design31920x1080.jpg" alt="Microsoft Azure" class="img-responsive" />
+                  <div class="carousel-caption">
 
-                </div>
+              </div>
             </div>
             <div class="item">
-                <img src="~/Galeria/pok贸j5/Rezydencja-Hotel-Katowice-Pokoje-Design51920x1080.jpg" alt="Microsoft Azure" class="img-responsive" />
+                <img src="~/Galeria/pok骿5/Rezydencja-Hotel-Katowice-Pokoje-Design51920x1080.jpg" alt="Microsoft Azure" class="img-responsive" />
                 <div class="carousel-caption">
 
                 </div>
